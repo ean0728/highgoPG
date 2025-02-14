@@ -32,4 +32,4 @@ func TestDatabaseConnection(t *testing.T) {
 	}
 
 	log.Println("Database connection successful!")
-} 
+}
