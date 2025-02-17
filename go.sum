@@ -1,5 +1,5 @@
-github.com/ean0728/pq v1.0.1-0.20250217064340-375e2a7a1df6 h1:SwJ7UNz6gCkLKo5oczTFv1ew02BGPOWLlrpjHoFzFn8=
-github.com/ean0728/pq v1.0.1-0.20250217064340-375e2a7a1df6/go.mod h1:aHAQlJl/Sq1RYi7+RprsOMhBaqVjdiiDyXTf/ndZQ0w=
+github.com/ean0728/pq v1.0.1-0.20250217065559-c641cc5fda7a h1:sKuZiyrVW2iMHzlFG65kWRj91Wtwy+dc8FM/j0+x0lI=
+github.com/ean0728/pq v1.0.1-0.20250217065559-c641cc5fda7a/go.mod h1:aHAQlJl/Sq1RYi7+RprsOMhBaqVjdiiDyXTf/ndZQ0w=
 github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.1.2/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=

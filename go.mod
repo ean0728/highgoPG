@@ -3,7 +3,7 @@ module github.com/ean0728/highgoPG
 go 1.21.1
 
 require (
-	github.com/ean0728/pq v1.0.1-0.20250217064340-375e2a7a1df6
+	github.com/ean0728/pq v1.0.1-0.20250217065559-c641cc5fda7a
 	gorm.io/gorm v1.21.10
 )
 

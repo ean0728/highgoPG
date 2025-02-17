@@ -88,7 +88,7 @@ func New(config Config) gorm.Dialector {
 }
 
 func (dialector Dialector) Name() string {
-	return "postgres"
+	return "highgo"
 }
 
 func (dialector Dialector) Initialize(db *gorm.DB) (err error) {
@@ -102,7 +102,7 @@ func (dialector Dialector) Initialize(db *gorm.DB) (err error) {
 	} else if dialector.DriverName != "" {
 		db.ConnPool, err = sql.Open(dialector.DriverName, dialector.Config.DSN)
 	} else {
-		db.ConnPool, err = sql.Open("postgres", dialector.Config.DSN)
+		db.ConnPool, err = sql.Open("highgo", dialector.Config.DSN)
 	}
 
 	if err != nil {
