@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	_ "github.com/lib/pq"
+	_ "github.com/ean0728/pq"
 	"gorm.io/gorm"
 	"gorm.io/gorm/callbacks"
 	"gorm.io/gorm/clause"
@@ -103,11 +103,13 @@ func (dialector Dialector) Initialize(db *gorm.DB) (err error) {
 		db.ConnPool, err = sql.Open(dialector.DriverName, dialector.Config.DSN)
 	} else {
 		db.ConnPool, err = sql.Open("postgres", dialector.Config.DSN)
-		if err != nil {
-			return
-		}
 	}
-	return
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (dialector Dialector) Migrator(db *gorm.DB) gorm.Migrator {
