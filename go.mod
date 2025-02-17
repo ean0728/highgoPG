@@ -1,4 +1,4 @@
-module highgoPG
+module github.com/ean0728/highgoPG
 
 go 1.21.1
 
