@@ -39,7 +39,9 @@ func Open(dsn string) gorm.Dialector {
 		newDsn += fmt.Sprintf("%s=%s ", k, v)
 	}
 
-	return &Dialector{&Config{DSN: dsn}}
+	fmt.Printf("newDsn: %v\n", newDsn)
+
+	return &Dialector{&Config{DSN: newDsn}}
 }
 
 // ParseDSN 拆解 PostgreSQL DSN
@@ -78,6 +80,13 @@ func parseDSN(dsn string) (map[string]string, error) {
 		if len(value) > 0 {
 			params[key] = value[0]
 		}
+	}
+
+	// 确保 search_path 被包含在参数中
+	if searchPath, ok := params["search_path"]; ok {
+		params["search_path"] = searchPath
+	} else {
+		params["search_path"] = "public" // 默认 schema
 	}
 
 	return params, nil

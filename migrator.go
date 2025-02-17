@@ -109,7 +109,13 @@ func (m Migrator) CreateIndex(value interface{}, name string) error {
 			opts := m.BuildIndexOptions(idx.Fields, stmt)
 			values := []interface{}{clause.Column{Name: idx.Name}, m.CurrentTable(stmt), opts}
 
-			createIndexSQL := "CREATE "
+			createIndexSQL := fmt.Sprintf(`DO $$
+BEGIN
+	IF NOT EXISTS (
+		SELECT 1 FROM pg_indexes 
+		WHERE tablename = '%v' AND indexname = '%v'
+	) THEN 
+		CREATE `, m.CurrentTable(stmt), clause.Column{Name: idx.Name})
 			if idx.Class != "" {
 				createIndexSQL += idx.Class + " "
 			}
@@ -127,7 +133,9 @@ func (m Migrator) CreateIndex(value interface{}, name string) error {
 				createIndexSQL += " WHERE " + idx.Where
 			}
 
-			return m.DB.Exec(createIndexSQL, values...).Error
+			// 添加如果不存在
+			createIndexSQL += ";\n\tEND IF;\nEND $$;"
+			return m.DB.Debug().Exec(createIndexSQL, values...).Error
 		}
 
 		return fmt.Errorf("failed to create index with name %v", name)
